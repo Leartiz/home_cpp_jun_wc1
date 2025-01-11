@@ -1,0 +1,20 @@
+@startuml styles
+
+!$line_thickness = 2
+!$border_color = "#A61E3B"
+!$background_color = "#F6F6C8"
+
+' -----------------------------------------------
+
+skinparam Shadowing True
+skinparam ArrowThickness $line_thickness
+
+skinparam ActorBackgroundColor $background_color
+skinparam ActorBorderColor $border_color
+skinparam ActorBorderThickness $line_thickness
+
+skinparam UsecaseBackgroundColor $background_color
+skinparam UsecaseBorderColor $border_color
+skinparam UsecaseBorderThickness $line_thickness
+
+@enduml

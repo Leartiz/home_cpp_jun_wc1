@@ -1,0 +1,6 @@
+[submodule "server/dependency/clickhouse"]
+	path = server/dependency/clickhouse
+	url = https://github.com/ClickHouse/clickhouse-cpp.git
+[submodule "server/dependency/strutil"]
+	path = server/dependency/strutil
+	url = https://github.com/tgalaj/strutil

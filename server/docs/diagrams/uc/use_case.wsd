@@ -1,0 +1,21 @@
+@startuml use_case
+
+!include styles.wsd
+
+left to right direction
+
+' nodes
+
+actor "User" as user
+
+usecase "Sign Up"  as sign_up #LightGray
+usecase "Sign In" as sign_in #LightGray
+usecase "Calculate Math\nExpression" as calculate_math_expr
+
+' edges
+
+user --> sign_up
+user --> sign_in
+user --> calculate_math_expr
+
+@enduml

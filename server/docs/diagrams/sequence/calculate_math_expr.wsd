@@ -1,0 +1,38 @@
+@startuml calculate_math_expr
+
+!include styles.wsd
+hide footbox
+
+' or external service!
+actor "User" as user
+
+participant "Tcp request\nhandler" as tcp_req_handler
+
+' for this use case!
+participant "Use case\nexecutor" as uc_executor
+
+participant "Math service" as math_service
+database "Use case\nlog storage" as uc_log_storage
+
+user -> tcp_req_handler : req packet\n   as raw data
+tcp_req_handler -> uc_executor : math expr
+uc_executor -> math_service : math expr
+math_service -> math_service : parse\nmath expr
+
+alt correct math expr
+    math_service -> math_service : calculate
+    math_service --> uc_executor : value
+else
+    math_service --> uc_executor : error
+end
+
+' value or error as result
+
+uc_executor -> uc_log_storage : math expr,\n   result, status
+uc_log_storage --> uc_executor : ok
+
+uc_executor --> tcp_req_handler : result
+tcp_req_handler -> tcp_req_handler : create res packet
+tcp_req_handler --> user : res packet\n   as raw data
+
+@enduml

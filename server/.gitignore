@@ -29,8 +29,6 @@ ui_*.h
 *.jsc
 Makefile*
 *build-*
-
-# new Qt?
 *build*
 *.qm
 *.prl

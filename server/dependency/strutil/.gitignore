@@ -1,0 +1,15 @@
+[Bb]uild/
+temp_build/
+temp_static/
+temp_templates/
+
+CMakeCache.txt
+CMakeFiles
+CMakeScripts
+Testing
+Makefile
+!docs/Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
