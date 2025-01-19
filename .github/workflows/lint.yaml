@@ -1,14 +1,27 @@
 name: Lint
 
 on:
-    push:
-      branches:
-        - main
+  push:
+    branches:
+      - '**'
         
 jobs:
-  build-lint-test:
+  cppcheck:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v3
+
+      - name: Install Cppcheck
+        run: |
+          sudo apt update
+          sudo apt install -y cppcheck
+
+      - name: Run Cppcheck on `server`
+        run: |
+          cppcheck --enable=all --inconclusive --error-exitcode=1 server/
+
+      - name: Run Cppcheck on `client`
+        run: |
+          cppcheck --enable=all --inconclusive --error-exitcode=1 client/

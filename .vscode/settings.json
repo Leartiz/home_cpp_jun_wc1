@@ -1,10 +1,15 @@
 {
     "cSpell.words": [
         "clickhouse",
+        "cppcheck",
         "devel",
         "enablerepo",
+        "exitcode",
         "groupinstall",
+        "iputils",
         "liblua",
+        "libpthread",
+        "libstdc",
         "llua",
         "qtbase",
         "qttools",

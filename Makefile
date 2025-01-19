@@ -1,8 +1,11 @@
 build_svr_image_on_centos:
 	podman build --progress=plain . -t wc1_server -f ./centos.server.Dockerfile
 
-run_server: build_image 
-	docker run -d -p 24445:24444 wc1_server
+run_server: build_svr_image_on_centos 
+	podman run -d -p 24445:24444 wc1_server
+
+only_run_server:
+	podman run -d -p 24445:24444 wc1_server
 
 # migrations for `ClickHouse`!
 # ------------------------------------------------------------------------

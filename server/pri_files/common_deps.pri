@@ -85,39 +85,35 @@ win32: { # msvc!
 # only release!
 
 } else: unix: {
-    INCLUDEPATH += \
-        /usr/include
-
+    INCLUDEPATH += /usr/include
     LIBS += -L/usr/lib64 -llua-5.4
+
+    # so?
+    LIBS += /usr/lib64/libpthread.a
 
     BOOST_INCLUDE_DIR=$$getenv(BOOST_INCLUDE_DIR)
     BOOST_LIBRARY_DIR=$$getenv(BOOST_LIBRARY_DIR)
-
+    
     message("BOOST_INCLUDE_DIR: $$BOOST_INCLUDE_DIR")
     message("BOOST_LIBRARY_DIR: $$BOOST_LIBRARY_DIR")
 
     INCLUDEPATH += $$BOOST_INCLUDE_DIR
-
-    # Why doesn't this work?
-    # LIBS += -L"$$BOOST_LIBRARY_DIR"
     LIBS += \
         $$BOOST_LIBRARY_DIR/libboost_system.a \
         $$BOOST_LIBRARY_DIR/libboost_thread.a \
         $$BOOST_LIBRARY_DIR/libboost_log_setup.a \
         $$BOOST_LIBRARY_DIR/libboost_log.a \
         $$BOOST_LIBRARY_DIR/libboost_filesystem.a
-
-    LIBS += -lpthread
+    # Why doesn't this work?
+    # LIBS += -L"$$BOOST_LIBRARY_DIR"
 
     # clickhouse (and it dependencies)
 
     CLICKHOUSE_BUILD_PATH = $$PWD/../dependency/clickhouse/build
     CLICKHOUSE_LIBRARY_PATH = $$PWD/../dependency/clickhouse/build/clickhouse
+    LIBS += $$CLICKHOUSE_LIBRARY_PATH/libclickhouse-cpp-lib.a
+
     CLICKHOUSE_CONTRIB_PATH = $$CLICKHOUSE_BUILD_PATH/contrib
-
-    LIBS += \
-        $$CLICKHOUSE_LIBRARY_PATH/libclickhouse-cpp-lib.a
-
     ABSL_LIBRARY_PATH =     $$CLICKHOUSE_CONTRIB_PATH/absl/absl
     CITYHASH_LIBRARY_PATH = $$CLICKHOUSE_CONTRIB_PATH/cityhash/cityhash
     LZ4_LIBRARY_PATH =      $$CLICKHOUSE_CONTRIB_PATH/lz4/lz4
@@ -129,5 +125,3 @@ win32: { # msvc!
         $$LZ4_LIBRARY_PATH/liblz4.a \
         $$ZSTD_LIBRARY_PATH/libzstdstatic.a
 }
-
-# ------------------------------------------------------------------------
