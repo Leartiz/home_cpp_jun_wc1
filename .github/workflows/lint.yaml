@@ -20,8 +20,17 @@ jobs:
 
       - name: Run Cppcheck on `server`
         run: |
-          cppcheck --enable=all --inconclusive --error-exitcode=1 server/
+          cppcheck \ 
+            --enable=all \
+            --inconclusive \
+            --error-exitcode=1 \
+            -i server/dependency \
+            server/ 
 
       - name: Run Cppcheck on `client`
         run: |
-          cppcheck --enable=all --inconclusive --error-exitcode=1 client/
+          cppcheck \ 
+            --enable=all \
+            --inconclusive \
+            --error-exitcode=1 \
+            client/ 
