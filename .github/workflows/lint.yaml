@@ -20,7 +20,7 @@ jobs:
 
       - name: Run Cppcheck on `server`
         run: |
-          cppcheck \ 
+          cppcheck \
             --enable=all \
             --inconclusive \
             --error-exitcode=1 \
@@ -29,8 +29,8 @@ jobs:
 
       - name: Run Cppcheck on `client`
         run: |
-          cppcheck \ 
+          cppcheck \
             --enable=all \
             --inconclusive \
             --error-exitcode=1 \
-            client/ 
+            client/
